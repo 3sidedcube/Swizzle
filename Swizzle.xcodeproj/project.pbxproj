@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		B8EF1D2D271598E500574A7B /* Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EF1D2A271598E500574A7B /* Swizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8EF1D372715990C00574A7B /* SwizzledMethod.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EF1D332715990C00574A7B /* SwizzledMethod.h */; };
-		B8EF1D382715990C00574A7B /* UIViewController+Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EF1D342715990C00574A7B /* UIViewController+Swizzle.h */; };
+		B8EF1D382715990C00574A7B /* UIViewController+Swizzle.h in Headers */ = {isa = PBXBuildFile; fileRef = B8EF1D342715990C00574A7B /* UIViewController+Swizzle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B8EF1D392715990C00574A7B /* SwizzledMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EF1D352715990C00574A7B /* SwizzledMethod.m */; };
 		B8EF1D3A2715990C00574A7B /* UIViewController+Swizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EF1D362715990C00574A7B /* UIViewController+Swizzle.m */; };
+		B8EF1D452715AD2C00574A7B /* NotificationCenter+Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8EF1D442715AD2C00574A7B /* NotificationCenter+Swizzle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		B8EF1D342715990C00574A7B /* UIViewController+Swizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Swizzle.h"; sourceTree = "<group>"; };
 		B8EF1D352715990C00574A7B /* SwizzledMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwizzledMethod.m; sourceTree = "<group>"; };
 		B8EF1D362715990C00574A7B /* UIViewController+Swizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Swizzle.m"; sourceTree = "<group>"; };
+		B8EF1D442715AD2C00574A7B /* NotificationCenter+Swizzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Swizzle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				B8EF1D342715990C00574A7B /* UIViewController+Swizzle.h */,
 				B8EF1D362715990C00574A7B /* UIViewController+Swizzle.m */,
 				B8EF1D2A271598E500574A7B /* Swizzle.h */,
+				B8EF1D442715AD2C00574A7B /* NotificationCenter+Swizzle.swift */,
 			);
 			path = Swizzle;
 			sourceTree = "<group>";
@@ -104,9 +107,11 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1300;
+				ORGANIZATIONNAME = "3 SIDED CUBE APP PRODUCTIONS LTD";
 				TargetAttributes = {
 					B8EF1D26271598E500574A7B = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -143,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8EF1D452715AD2C00574A7B /* NotificationCenter+Swizzle.swift in Sources */,
 				B8EF1D392715990C00574A7B /* SwizzledMethod.m in Sources */,
 				B8EF1D3A2715990C00574A7B /* UIViewController+Swizzle.m in Sources */,
 			);
@@ -272,6 +278,7 @@
 		B8EF1D31271598E500574A7B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -294,6 +301,8 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -301,6 +310,7 @@
 		B8EF1D32271598E500574A7B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -323,6 +333,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
