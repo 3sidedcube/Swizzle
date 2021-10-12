@@ -20,6 +20,7 @@ public extension NotificationCenter {
     ///   - block: Closure
     ///
     /// - Returns: `NSObjectProtocol`
+    @discardableResult
     func addSwizzledObserver(
         forName name: NSNotification.Name,
         object: Any? = nil,
