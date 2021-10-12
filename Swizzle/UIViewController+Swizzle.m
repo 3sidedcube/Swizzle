@@ -18,6 +18,7 @@ NSString *kViewWillAppearNotification = @"kViewWillAppearNotification";
 NSString *kViewDidAppearNotification = @"kViewDidAppearNotification";
 NSString *kViewWillDisappearNotification = @"kViewWillDisappearNotification";
 NSString *kViewDidDisappearNotification = @"kViewDidDisappearNotification";
+NSString *kViewControllerNotificationKey = @"kViewControllerNotificationKey";
 
 @implementation UIViewController (Swizzle)
 
@@ -63,6 +64,27 @@ NSString *kViewDidDisappearNotification = @"kViewDidDisappearNotification";
     ];
 }
 
+#pragma mark - User Info
+
+/**
+ User info dictionary for notifications
+ */
+-(NSDictionary *)userInfo {
+    return @{
+        kViewControllerNotificationKey: self
+    };
+}
+
+/**
+ Post of the default notification center a notification with the given name
+ */
+-(void)postNotificationName:(NSString *)notificationName {
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center postNotificationName:notificationName
+                          object:self
+                        userInfo:[self userInfo]];
+}
+
 #pragma mark - Method Swizzling
 
 - (void)swizzled_viewWillAppear:(BOOL)animated {
@@ -71,9 +93,8 @@ NSString *kViewDidDisappearNotification = @"kViewDidDisappearNotification";
     if (SWIZZLE_LOG) {
         NSLog(@"%@ %@", NSStringFromSelector(_cmd), self);
     }
-    
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotificationName:kViewWillAppearNotification object:self];
+
+    [self postNotificationName:kViewWillAppearNotification];
 }
 
 - (void)swizzled_viewDidAppear:(BOOL)animated {
@@ -83,8 +104,7 @@ NSString *kViewDidDisappearNotification = @"kViewDidDisappearNotification";
         NSLog(@"%@ %@", NSStringFromSelector(_cmd), self);
     }
 
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotificationName:kViewDidAppearNotification object:self];
+    [self postNotificationName:kViewDidAppearNotification];
 }
 
 - (void)swizzled_viewWillDisappear:(BOOL)animated {
@@ -93,9 +113,8 @@ NSString *kViewDidDisappearNotification = @"kViewDidDisappearNotification";
     if (SWIZZLE_LOG) {
         NSLog(@"%@ %@", NSStringFromSelector(_cmd), self);
     }
-    
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotificationName:kViewWillDisappearNotification object:self];
+
+    [self postNotificationName:kViewWillDisappearNotification];
 }
 
 - (void)swizzled_viewDidDisappear:(BOOL)animated {
@@ -105,8 +124,7 @@ NSString *kViewDidDisappearNotification = @"kViewDidDisappearNotification";
         NSLog(@"%@ %@", NSStringFromSelector(_cmd), self);
     }
 
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotificationName:kViewDidDisappearNotification object:self];
+    [self postNotificationName:kViewDidDisappearNotification];
 }
 
 @end

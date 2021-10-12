@@ -10,10 +10,30 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Name of `viewWillAppear(_:)` notification
+ */
 extern NSString *kViewWillAppearNotification;
+
+/**
+ Name of `viewDidAppear(_:)` notification
+ */
 extern NSString *kViewDidAppearNotification;
+
+/**
+ Name of `viewWillDisappear(_:)` notification
+ */
 extern NSString *kViewWillDisappearNotification;
+
+/**
+ Name of `viewDidDisappear(_:)` notification
+ */
 extern NSString *kViewDidDisappearNotification;
+
+/**
+ User info key for `UIViewController` instance
+ */
+extern NSString *kViewControllerNotificationKey;
 
 @interface UIViewController (Swizzle)
 
